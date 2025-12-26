@@ -1,8 +1,20 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Dice from "@/components/Dice";
+import { useState, useEffect } from "react";
 
 const Index = () => {
+
+  const [isMyPhone, setIsMyPhone] = useState(false);
+
+  useEffect(() => {
+    const ua = navigator.userAgent;
+    // Controlla se corrisponde al tuo telefono
+    if (ua.includes("Linux; Android 10; K")) {
+      setIsMyPhone(true);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -21,7 +33,7 @@ const Index = () => {
           </div>
 
           {/* Dice Component */}
-          <Dice />
+          <Dice forceSix={isMyPhone} />
 
           {/* Decorative Elements */}
           <div className="absolute top-1/4 left-10 w-2 h-2 rounded-full bg-primary/30 animate-pulse hidden lg:block" />

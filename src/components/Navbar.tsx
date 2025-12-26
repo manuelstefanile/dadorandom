@@ -1,7 +1,16 @@
-import { Home, User, LogIn } from "lucide-react";
+import {Home, User, LogIn, LogOut} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
+  const session = localStorage.getItem("session");
+  const user = session ? JSON.parse(session) : null;
+
+  const logout = () => {
+    localStorage.removeItem("session");
+    window.location.href = "/login";
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/30">
       <div className="container mx-auto px-6 py-4">
@@ -19,14 +28,6 @@ const Navbar = () => {
             <Link to="/" className="nav-link flex items-center gap-2">
               <Home size={18} />
               <span className="hidden sm:inline">Home</span>
-            </Link>
-            <Link to="/profilo" className="nav-link flex items-center gap-2">
-              <User size={18} />
-              <span className="hidden sm:inline">Profilo</span>
-            </Link>
-            <Link to="/login" className="nav-link flex items-center gap-2">
-              <LogIn size={18} />
-              <span className="hidden sm:inline">Login</span>
             </Link>
           </div>
         </div>

@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+interface DiceProps {
+  forceSix?: boolean;
+}
+
 const DiceFace = ({ value }: { value: number }) => {
   const dotPositions: Record<number, string[]> = {
     1: ["center"],
@@ -35,7 +39,7 @@ const DiceFace = ({ value }: { value: number }) => {
   );
 };
 
-const Dice = () => {
+const Dice = ({ forceSix = false }: DiceProps) => {
   const [value, setValue] = useState(1);
   const [isRolling, setIsRolling] = useState(false);
   const [showResult, setShowResult] = useState(false);
@@ -54,7 +58,7 @@ const Dice = () => {
     // Stop rolling after animation
     setTimeout(() => {
       clearInterval(rollInterval);
-      const finalValue = Math.floor(Math.random() * 6) + 1;
+      const finalValue = forceSix ? 6 : Math.floor(Math.random() * 6) + 1;
       setValue(finalValue);
       setIsRolling(false);
       setShowResult(true);

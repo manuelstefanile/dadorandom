@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Profilo from "./pages/Profilo";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import Logout from "@/pages/LogOut.tsx";
 
 const queryClient = new QueryClient();
 
@@ -18,8 +19,6 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/profilo" element={<Profilo />} />
-          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

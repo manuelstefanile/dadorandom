@@ -11,15 +11,6 @@ const Footer = () => {
           <p className="text-muted-foreground text-sm text-center">
             © 2024 DiceRoll. Tenta la fortuna!
           </p>
-
-          <div className="flex items-center gap-4">
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-              Privacy
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-              Termini
-            </a>
-          </div>
         </div>
       </div>
     </footer>
